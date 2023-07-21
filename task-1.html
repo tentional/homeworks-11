@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css ">
+   <title>Завдання 5</title>
+</head>
+<body>
+   <script>
+      function getRandomWeeklyIncomesShopsArray(shopsAmount,minValue,maxValue) {
+         let incomes = []
+ 
+         for (let i = 0; i < shopsAmount; i++) {
+           let weeklyIncome = []
+           for (let j = 0; j < 7; j++) {
+            let randomDailyIncome =
+               Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+             weeklyIncome.push(randomDailyIncome)
+           }
+           incomes.push(weeklyIncome)
+         }
+         return incomes
+       }
+ 
+       let incomes = getRandomWeeklyIncomesShopsArray(
+         parseInt(prompt("Введіть число магазинів")),
+         parseInt(prompt("Введіть число мінімального прибутку")),
+         parseInt(prompt("Введіть число максимального прибутку"))
+       )
+       document.write(`Тижневі прибутки: ${incomes}<br>`)
+       //5) максимальний прибуток за середу
+
+       function getMaxIncomeOfWednesday(incomeArray) {
+         let incomesOfWednesday = []
+         for (let i = 0; i < incomeArray.length; i++) {
+           incomesOfWednesday.push(incomeArray[i][2])
+         }
+         return Math.max(...incomesOfWednesday)
+       }
+ 
+       let maxIncomeOfWednesday = getMaxIncomeOfWednesday(incomes)
+       document.write(`Максимальний прибуток за середу: ${maxIncomeOfWednesday}`)
+   </script>
+</body>
+</html>

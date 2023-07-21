@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css ">
+   <title>Завдання 7</title>
+</head>
+<body>
+   <script>
+         // Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+   function getRandomWeeklyIncomesShopsArray(shopsAmount,minValue,maxValue) {
+      let incomes = []
+
+      for (let i = 0; i < shopsAmount; i++) {
+        let weeklyIncome = []
+        for (let j = 0; j < 7; j++) {
+         let randomDailyIncome =
+            Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+          weeklyIncome.push(randomDailyIncome)
+        }
+        incomes.push(weeklyIncome)
+      }
+      return incomes
+    }
+
+    let incomes = getRandomWeeklyIncomesShopsArray(
+      parseInt(prompt("Введіть число магазинів")),
+      parseInt(prompt("Введіть число мінімального прибутку")),
+      parseInt(prompt("Введіть число максимального прибутку"))
+    )
+    document.write(`Тижневі прибутки: ${incomes}<br>`)
+    
+         // 7) відсортувати кожен тиждень за зростанням
+    function getSortedWeeksFromLow(incomeArray) {
+      let sortedIncomes = []
+      for (let i = 0; i < incomeArray.length; i++) {
+        incomeArray[i].sort((num1, num2) => num1 - num2)
+        sortedIncomes.push(incomeArray[i])
+      }
+      return sortedIncomes
+    }
+
+    let sortedIncomes = getSortedWeeksFromLow(incomes)
+    document.write(`Відсортовані тижні: ${sortedIncomes}`)
+
+   </script>
+</body>
+</html>

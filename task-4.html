@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css ">
+   <title>Завдання 5</title>
+</head>
+<body>
+   <script>
+
+      // Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+      function getRandomWeeklyIncomesShopsArray(shopsAmount,minValue,maxValue) {
+         let incomes = []
+ 
+         for (let i = 0; i < shopsAmount; i++) {
+           let weeklyIncome = []
+           for (let j = 0; j < 7; j++) {
+            let randomDailyIncome =
+               Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+             weeklyIncome.push(randomDailyIncome)
+           }
+           incomes.push(weeklyIncome)
+         }
+         return incomes
+       }
+ 
+       let incomes = getRandomWeeklyIncomesShopsArray(
+         parseInt(prompt("Введіть число магазинів")),
+         parseInt(prompt("Введіть число мінімального прибутку")),
+         parseInt(prompt("Введіть число максимального прибутку"))
+       )
+       document.write(`Тижневі прибутки: ${incomes}<br>`)
+
+            // 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+       function getSortedFromMax(incomeArray) {
+         function compareRows(a, b) {
+           const maxA = Math.max(...a)
+           const maxB = Math.max(...b)
+ 
+           if (maxA > maxB) return -1
+           if (maxA < maxB) return 1
+           return 0
+         }
+         return incomeArray.sort(compareRows)
+       }
+ 
+       let sortedWeeks = getSortedFromMax(incomes)
+       document.write(`Відсортований список: ${sortedWeeks}`)
+   </script>
+</body>
+</html>
